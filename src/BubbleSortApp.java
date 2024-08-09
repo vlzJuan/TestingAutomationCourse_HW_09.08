@@ -1,5 +1,7 @@
 import java.util.Random;
 
+import static java.lang.String.format;
+
 
 /**
  * Code corresponding to the Solvd Testing Automation course,
@@ -20,29 +22,32 @@ public class BubbleSortApp {
 
         // Implement a fixed array to test the program instead of the random one.
 
-        int[] ordenable = randomArrayOfInts(10);    //  Build a new array
-                                                    //  of 10 random ints.
+        int[] ordenable = randomArrayOfInts(5);    //  Build a new array
+        //  of 5 random ints.
         arrayPrinter(ordenable, "Original array:");
+        BubbleSortDescending(ordenable);
+        arrayPrinter(ordenable, "Array after bubblesort (Descending)");
 
+    }
+
+
+    public static void BubbleSortDescending(int[] array){
         // Send this to a subroutine later.
-        for(int i=0; i<ordenable.length; i++){
-            for(int j = i+1; j<ordenable.length; j++){
+        for(int i=0; i<array.length; i++){
+            for(int j = i+1; j<array.length; j++){
                 //  Condition for sorting: If the j-th element is larger
                 //  than the i-th, swap them.
                 //  By doing this, the larger values will 'bubble up' to
                 //  the first elements of the array.
-                if(ordenable[j] > ordenable[i]){
-                    int aux = ordenable[j];
-                    ordenable[j] = ordenable[i];
-                    ordenable[i] = aux;
+                if(array[j] > array[i]){
+                    int aux = array[j];
+                    array[j] = array[i];
+                    array[i] = aux;
                 }
             }
         }
-
-        arrayPrinter(ordenable, "Array after bubblesort (Descending)")
-
-
     }
+
 
     /**
      * Function to return an array of random ints.
@@ -76,16 +81,19 @@ public class BubbleSortApp {
      * @param array , an array of ints.
      * @param msj   , a message to print before printing the array.
      */
-    void arrayPrinter(int[] array, String msj){
+    static void arrayPrinter(int[] array, String msj){
 
         System.out.println(msj);
 
-        System.out.print("[ ");
-        for(int value:array){
-            System.out.println( valor + " ");
+        String arrayToString = "[ ";
+
+        for(int valor:array){
+            arrayToString += format(valor + " ");
         }
 
-        System.out.print("]");
+        arrayToString+= "]";
+
+        System.out.println(arrayToString);
 
     }
 
